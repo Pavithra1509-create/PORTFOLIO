@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pharmacy Stock Locator</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="splash-screen">
+  <div class="splash-container">
+    <img src="assets/images/logo.jpg" alt="Pharmacy Logo" class="logo">
+    <h1>Pharmacy Stock Locator</h1>
+    <p>Find the right medicine at the right time</p>
+  </div>
+
+  <script>
+     setTimeout(() => {
+    document.body.classList.add("fade-out");
+    setTimeout(() => {
+      window.location.href = "home.html";
+    }, 1000); // wait for fade-out
+  }, 2000); // show splash for 2s
+  </script>
+</body>
+</html>
