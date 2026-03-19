@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Staff - Medicines</title>
+  <link rel="stylesheet" href="assets/css/staff.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>Pharmacy Stock Locator</h1>
+    <nav>
+      <a href="staff-dashboard.html">Dashboard</a>
+      <a href="#">Manage Stock</a>
+      <a href="#">Reports</a>
+      <a href="#">Logout</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Medicine Stock</h2>
+
+    <!-- Add Medicine Button -->
+    <button class="add-btn" id="openModalBtn">+ Add Medicine</button>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Medicine Name</th>
+          <th>Quantity</th>
+          <th>Expiry Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="medicineTable">
+        <!-- Dynamic rows will go here -->
+      </tbody>
+    </table>
+  </main>
+
+  <!-- Modal (hidden by default) -->
+  <div id="addMedicineModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" id="closeModalBtn">&times;</span>
+      <h3>Add Medicine</h3>
+      <form id="addMedicineForm">
+        <label for="medName">Medicine Name</label>
+        <input type="text" id="medName" required>
+
+        <label for="medQty">Quantity</label>
+        <input type="number" id="medQty" required>
+
+        <label for="medExpiry">Expiry Date</label>
+        <input type="date" id="medExpiry" required>
+
+        <button type="submit" class="save-btn">Save</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Modal controls
+    const modal = document.getElementById("addMedicineModal");
+    const openBtn = document.getElementById("openModalBtn");
+    const closeBtn = document.getElementById("closeModalBtn");
+
+    openBtn.onclick = () => modal.style.display = "flex";
+    closeBtn.onclick = () => modal.style.display = "none";
+    window.onclick = (e) => { if (e.target == modal) modal.style.display = "none"; }
+
+    // Form submit -> add to table dynamically
+    document.getElementById("addMedicineForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("medName").value;
+      const qty = document.getElementById("medQty").value;
+      const expiry = document.getElementById("medExpiry").value;
+
+      const table = document.getElementById("medicineTable");
+      const newRow = table.insertRow();
+      newRow.innerHTML = `
+        <td>${table.rows.length}</td>
+        <td>${name}</td>
+        <td>${qty}</td>
+        <td>${expiry}</td>
+        <td><button class="delete-btn">Delete</button></td>
+      `;
+
+      // Reset + close modal
+      this.reset();
+      modal.style.display = "none";
+
+      // Delete functionality
+      newRow.querySelector(".delete-btn").addEventListener("click", () => {
+        newRow.remove();
+      });
+    });
+  </script>
+</body>
+</html>
+
+

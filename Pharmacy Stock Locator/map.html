@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medicine Location - Map</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+  <link rel="stylesheet" href="assets/css/map.css">
+  <style>
+    #map {
+      height: 80vh;
+      width: 100%;
+      margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <h1>Pharmacy Stock Locator</h1>
+    </div>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="find.html">Find Medicines</a>
+      <a href="staff.html">Staff Login</a>
+      <a href="admin.html">Admin Panel</a>
+    </nav>
+  </header>
+
+  <main class="map-container">
+    <h2>Medicine Availability Location</h2>
+    <p id="medicine-name"></p>
+    <button id="get-location">📍 Get My Location</button>
+    <div id="map"></div>
+  </main>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <script>
+    // Initialize map with default location (Chennai)
+    const map = L.map('map').setView([13.0827, 80.2707], 12);
+
+    // Add OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Read medicine name from URL query
+    const params = new URLSearchParams(window.location.search);
+    const medicine = params.get("medicine");
+    if(medicine){
+      document.getElementById("medicine-name").textContent = "Searching for: " + medicine;
+    }
+
+    // "Get My Location" button
+    document.getElementById("get-location").addEventListener("click", () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+
+          map.setView([lat, lon], 15);
+
+          L.marker([lat, lon]).addTo(map)
+            .bindPopup("📍 You are here").openPopup();
+        }, () => {
+          alert("Location access denied. Showing Chennai.");
+        });
+      } else {
+        alert("Geolocation not supported by this browser.");
+      }
+    });
+  </script>
+</body>
+</html>
+

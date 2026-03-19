@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pharmacy Stock Locator - Home</title>
+  <link rel="stylesheet" href="assets/css/home.css">
+</head>
+<body>
+  <!-- Header -->
+<!-- Header -->
+<!-- Header -->
+
+ <!-- Header -->
+<header>
+  <div class="logo">
+    <h1>Pharmacy Stock Locator</h1>
+  </div>
+
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="find.html">Find Medicines</a>
+    <a href="staff.html">Staff Login</a>
+    <a href="admin.html">Admin Panel</a>
+  </nav>
+
+  <!-- Language Selector -->
+  <div class="language">
+    <label for="language">🌐</label>
+    <select id="language" name="language">
+      <option value="en">English</option>
+      <option value="ta">தமிழ்</option>
+      <option value="hi">हिन्दी</option>
+      <option value="te">తెలుగు</option>
+      <option value="ml">മലയാളം</option>
+      <option value="kn">ಕನ್ನಡ</option>
+      <option value="bn">বাংলা</option>
+      <option value="gu">ગુજરાતી</option>
+      <option value="mr">मराठी</option>
+      <option value="ur">اردو</option>
+
+      <option value="fr">Français (French)</option>
+  <option value="es">Español (Spanish)</option>
+  <option value="de">Deutsch (German)</option>
+  <option value="zh">中文 (Chinese)</option>
+  <option value="ja">日本語 (Japanese)</option>
+  <option value="ko">한국어 (Korean)</option>
+  <option value="ar">العربية (Arabic)</option>
+  <option value="ru">Русский (Russian)</option>
+    </select>
+  </div>
+</header>
+
+
+
+
+  <!-- Hero Section -->
+  <section class="hero" style="background: url('assets/images/search-bg.jpg') center/cover no-repeat;">
+    <h2>Find Medicines Anytime, Anywhere</h2>
+    <p>Our system helps you locate nearby pharmacies with real-time stock updates. 
+       Save time, reduce stress, and get the right medicine at the right place.</p>
+    <button onclick="window.location.href='find.html'">🔍 Start Searching</button>
+  </section>
+
+  <!-- About Section -->
+  <section class="about">
+    <h2>About the System</h2>
+    <p>
+      The Pharmacy Stock Locator is designed to make healthcare more accessible. 
+      Patients can easily find medicines, pharmacies can update stocks with QR codes, 
+      and admins can manage pharmacy activity seamlessly. 
+    </p>
+  </section>
+
+  <!-- Images / Features Section -->
+  <section class="features">
+    <h2>Our Features</h2>
+    <div class="feature-list">
+      <div>
+        <img src="assets/images/medicine1.jpg" alt="Medicine Stock">
+        <p>Real-time Stock Updates</p>
+      </div>
+      <div>
+        <img src="assets/images/pharmacy.jpg" alt="Pharmacy">
+        <p>Nearby Pharmacy Finder</p>
+      </div>
+      <div>
+        <img src="assets/images/qrcode.jpg" alt="QR Update">
+        <p>QR-based Stock Update</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Pharmacy Stock Locator | All Rights Reserved</p>
+  </footer>
+
+  <script>
+  const langSelect = document.getElementById("language");
+
+  // Load saved language from localStorage
+  const savedLang = localStorage.getItem("selectedLang");
+  if (savedLang) {
+    langSelect.value = savedLang;
+  }
+
+  // Save when user changes language
+  langSelect.addEventListener("change", () => {
+    localStorage.setItem("selectedLang", langSelect.value);
+    location.reload(); // reload to apply changes
+  });
+</script>
+
+</body>
+</html>
+
