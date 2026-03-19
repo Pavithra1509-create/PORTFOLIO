@@ -1,0 +1,199 @@
+/* ===== General Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+body {
+  background: #f8fbfd;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* ===== Header ===== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, #0077b6, #00b4d8);
+  padding: 15px 40px;
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+header .logo h1 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+header nav {
+  display: flex;
+  gap: 20px;
+}
+
+header nav a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  position: relative;
+  transition: 0.3s;
+}
+
+header nav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background: #fff;
+  transition: width 0.3s ease;
+}
+
+header nav a:hover::after {
+  width: 100%;
+}
+
+.language {
+  background: #fff;
+  border-radius: 8px;
+  padding: 4px 10px;
+}
+
+.language select {
+  border: none;
+  background: none;
+  font-weight: 600;
+  cursor: pointer;
+  color: #0077b6;
+}
+
+/* ===== Container ===== */
+.container {
+  max-width: 800px;
+  margin: 60px auto;
+  background: #fff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 119, 182, 0.15);
+  animation: fadeIn 1s ease-in-out;
+}
+
+.container h2 {
+  font-size: 2rem;
+  color: #0077b6;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+/* ===== Search Section ===== */
+.pharmacy-item {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.pharmacy-item input[type="text"] {
+  flex: 1;
+  padding: 12px 15px;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.pharmacy-item input[type="text"]:focus {
+  border-color: #00b4d8;
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 180, 216, 0.3);
+}
+
+/* ===== Buttons ===== */
+.btn {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+.mic-btn {
+  background: #90e0ef;
+  color: #003049;
+}
+
+.mic-btn:hover {
+  background: #00b4d8;
+  color: #fff;
+}
+
+#searchBtn {
+  background: #0077b6;
+  color: #fff;
+}
+
+#searchBtn:hover {
+  background: #023e8a;
+}
+
+/* ===== Results ===== */
+#results {
+  margin-top: 30px;
+}
+
+#results .pharmacy-item {
+  background: #f9fcff;
+  border: 1px solid #e6f4f9;
+  border-radius: 15px;
+  padding: 12px;
+  box-shadow: 0 4px 10px rgba(0, 119, 182, 0.1);
+  transition: transform 0.3s;
+}
+
+#results .pharmacy-item:hover {
+  transform: translateY(-5px);
+}
+
+.get-location {
+  background: #06d6a0;
+  color: #fff;
+}
+
+.get-location:hover {
+  background: #059669;
+}
+
+/* ===== Animations ===== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .container {
+    padding: 25px;
+  }
+
+  .pharmacy-item {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
